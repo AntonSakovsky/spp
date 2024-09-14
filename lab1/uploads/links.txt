@@ -1,0 +1,7 @@
+https://antonsakovsky.github.io/ghost-host/
+https://antonsakovsky.github.io/readbel/
+https://antonsakovsky.github.io/burger-house/
+https://antonsakovsky.github.io/smartype-ex
+https://github.com/AntonSakovsky/smartype-ex
+
+SSH: git@github.com:AntonSakovsky/smartype-ex.git https://github.com/AntonSakovsky/smartype-ex.git
