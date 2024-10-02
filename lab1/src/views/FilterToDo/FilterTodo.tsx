@@ -12,7 +12,7 @@ export const FilterTodo: FC<FilterTodoProps> = ({ filter }) => {
                 <input
                     type="submit"
                     value="all"
-                    className={`filter-btn main-btn ${filter === "all" ? "" : "not-active"}`}
+                    className={`filter-btn ${filter === "all" ? "" : "not-active"}`}
                 />
             </form>
             <form method="POST" action="change-filter" className="filter-form">
@@ -20,7 +20,7 @@ export const FilterTodo: FC<FilterTodoProps> = ({ filter }) => {
                 <input
                     type="submit"
                     value="done"
-                    className={`filter-btn main-btn ${filter === "done" ? "" : "not-active"}`}
+                    className={`filter-btn ${filter === "done" ? "" : "not-active"}`}
                 />
             </form>
         </div>

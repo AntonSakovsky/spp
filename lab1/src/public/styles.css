@@ -3,48 +3,36 @@
     padding: 0;
     margin: 0;
     font-size: 18px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-body {
-    background-color: rgb(234, 242, 255);
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .app-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .addTodo-form {
     padding-block: 15px;
-    display: flex;
     width: 100%;
-    justify-content: center;
-    flex-direction: column;
     gap: 15px;
-    background-color: rgb(216, 236, 255);
 }
 .addTodo-title {
     font-size: 24px;
     text-align: center;
 }
 .addTodo-inputs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 30px;
 }
 
 .addTodo-text {
-    padding: 5px 10px;
-    width: 300px;
+    padding: 10px;
+    width: 100%;
     outline: none;
     border: 1px solid rgb(58, 58, 58);
     border-radius: 5px;
     transition: all 0.2s ease;
-    
-    border: 1px solid rgb(155, 155, 255);
+    border: 1px solid rgb(155, 255, 190);
 }
 
 .addTodo-text::placeholder {
@@ -57,54 +45,51 @@ body {
     box-shadow: 0px 0px 7px 3px rgba(0, 255, 255, 0.205);
 }
 
-.end-date-wrap label {
-    font-weight: 600;
-    margin-right: 5px;
+.end-date-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .addTodo-end {
-    padding: 5px 10px;
-    border: 1px solid rgb(155, 155, 255);
+    padding: 10px;
+    border: 1px solid rgb(155, 255, 190);
     outline: none;
-    /* font-size: 16px; */
     color: rgb(0, 39, 56);
+    border-radius: 5px;
 }
 
 .addTodo-button {
     padding: 5px 10px;
+    margin-top: 10px;
 }
 
 .main-btn {
-    background-color: rgb(0, 119, 255);
-    border: 2px solid rgb(0, 166, 255);
+    background-color: rgb(0, 0, 0);
     color: white;
     border-radius: 5px;
     outline: none;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .main-btn:hover {
-    background-color: rgb(26, 133, 255);
+    background-color: rgb(50, 50, 50);
 }
 
 .todos-wrap {
     padding-top: 10px;
-    background-color: rgb(205, 231, 255);
 }
 
 .todos {
     width: 100%;
-    background-color: rgb(216, 236, 255);
 }
 .todo {
     padding: 10px 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.todo:nth-child(2n) {
-    background-color: rgb(201, 229, 255);
+    border-bottom: 1px solid rgb(103, 255, 156);
 }
 
 .todo.completed .todo-text {
@@ -131,26 +116,27 @@ body {
 .todo-satus-text-wrap {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .todo-text {
-    width: 350px;
+    width: 150px;
 }
 
 .todo-date-file-wrap {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
 }
 
+.todo-endDate,
 .date {
-    font-size: 16px;
+    font-size: 14px;
 }
 .upload {
     padding: 3px;
     text-align: end;
-    width: 150px;
+    width: 80px;
 }
 
 .upload-file {
@@ -159,15 +145,17 @@ body {
 
 .uploaded-file {
     display: inline-block;
-    width: 150px;
+    width: 80px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: end;
+    font-size: 14px;
 }
 
 .upload-btn {
     margin-right: 3px;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -177,22 +165,24 @@ body {
 
 .upload-submit {
     padding: 0px 5px;
+    font-size: 14px;
 }
-
 
 .filter {
     display: flex;
-    background-color: rgb(162, 210, 255);
-    padding-block: 5px;
-    gap: 3px;
+    justify-content: flex-end;
 }
 
-
 .filter-btn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    outline: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
     padding: 3px 7px;
     font-size: 14px;
 }
 
 .filter-btn.not-active {
-    opacity: .6;
+    opacity: 0.6;
 }

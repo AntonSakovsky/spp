@@ -14,7 +14,7 @@ export const Todo: FC<TodoProps> = ({ todo }) => {
                 <form action={`todo/${todo.id}`} method="POST" className="todo-status">
                     <input
                         type="submit"
-                        value={todo.status ? "Вернуть" : "Выполнить"}
+                        value={todo.status ? "Оставить" : "Завершить"}
                         className="todo-status"
                     />
                 </form>
