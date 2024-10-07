@@ -1,0 +1,23 @@
+.emailInput input {
+    padding: 10px;
+    width: 100%;
+}
+
+.inputWrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--margin-xs);
+
+}
+.emailInput div {
+     &::after {
+        border-color: rgb(203, 0, 203);
+    }
+}
+
+.error {
+    height: 14px;
+    font-size: 14px;
+    line-height: 14px;
+    color: red;
+}

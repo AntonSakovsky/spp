@@ -11,6 +11,7 @@ import { Todo } from './entities/Todo';
 import { User } from './entities/User';
 import { TodoModule } from './todo/todo.module';
 import { UserModule } from './user/user.module';
+import { FileModule } from './file/file.module';
 
 @Module({
     imports: [
@@ -44,6 +45,7 @@ import { UserModule } from './user/user.module';
         AuthModule,
         UserModule,
         TodoModule,
+        FileModule,
     ],
     controllers: [],
     providers: [],

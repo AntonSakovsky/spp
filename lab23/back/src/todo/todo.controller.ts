@@ -8,14 +8,20 @@ import {
     Post,
     Put,
     Req,
+    UploadedFile,
     UseGuards,
+    UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { RequestWithUserInfo } from 'src/auth/types/RequestWithUserInfo';
+import { multerOptions } from './config/multer.config';
 import { TodoCreateDto } from './dto/TodoCreateDto';
-import { TodoUpdateDto } from './dto/TodoUpdateDto';
-import { TodoService } from './todo.service';
 import { TodoDto } from './dto/TodoDto';
+import { TodoUpdateDto } from './dto/TodoUpdateDto';
+import { UploadTodoFileDto } from './dto/UploadTodoFileDto';
+import { TodoService } from './todo.service';
+import { CommentCreateDto } from './dto/CommentCreateDto';
 
 @UseGuards(AuthGuard)
 @Controller('todos')
@@ -35,6 +41,25 @@ export class TodoController {
         @Body() todoDto: TodoCreateDto,
     ) {
         return this.todoService.createTodo(request.user.id, todoDto);
+    }
+
+    @UseInterceptors(FileInterceptor('file', multerOptions))
+    @Post('upload')
+    async uploadFileComment(
+        @UploadedFile() file: Express.Multer.File,
+        @Req() request: RequestWithUserInfo,
+        @Body() body: UploadTodoFileDto,
+    ) {
+        return await this.todoService.uploadFile(
+            file,
+            request.user.id,
+            body.todoId,
+        );
+    }
+
+    @Post('comment')
+    async createComment(@Req() request: RequestWithUserInfo,@Body() commentDto: CommentCreateDto) {
+        return this.todoService.createTodoComment(commentDto, request.user.id);
     }
 
     @Put()

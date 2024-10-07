@@ -4,13 +4,13 @@ import {
     UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcrypt';
-
 import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
+import { Repository } from 'typeorm';
+
 import { RefreshToken } from 'src/entities/RefreshToken';
 import { UserDto } from 'src/user/dto/UserDto';
 import { UserService } from 'src/user/user.service';
-import { Repository } from 'typeorm';
 import { LoginDto } from './dto/LoginDto';
 import { RegisterDto } from './dto/RegisterDto';
 
@@ -89,10 +89,10 @@ export class AuthService {
             throw new UnauthorizedException('Invalid token');
         }
 
-        // const isExpired = new Date(tokenFromDb.expires) < new Date();
-        // if (isExpired) {
-        //     throw new UnauthorizedException('Invalid token');
-        // }
+        const isExpired = new Date(tokenFromDb.expires) < new Date();
+        if (isExpired) {
+            throw new UnauthorizedException('Invalid token');
+        }
 
         const user = await this.userService.getById(tokenFromDb.userId);
         const userDto = new UserDto(user);
@@ -111,7 +111,7 @@ export class AuthService {
 
     async generateUserTokens(user: UserDto) {
         const accessToken = await this.jwtService.signAsync(user, {
-            expiresIn: '1d',
+            expiresIn: 15,
         });
 
         const refreshToken = await this.jwtService.signAsync(user, {

@@ -12,7 +12,4 @@ export class TodoCreateDto {
     @IsNumber()
     order: number;
 
-    @IsDate()
-    @Transform(({ value }) => (value ? new Date(value) : null))
-    deadline: Date;
 }

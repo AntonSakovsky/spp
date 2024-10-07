@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: var(--padding-s) var(--padding-m);
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .text {
+        color: rgb(51, 51, 51);
+    }
+}
+
+.closeBtn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color .25s ease;
+
+    &:hover {
+        background-color: rgb(240, 240, 240);
+    }
+}
+
+.closeIcon {
+    font-size: 22px;
+}

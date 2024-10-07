@@ -1,0 +1,9 @@
+.datePicker {
+    width: 100%;
+
+
+    & input {
+        padding: var(--padding-xs);
+        padding-left: var(--padding-s);
+    }
+}

@@ -5,9 +5,10 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
+import { Repository } from 'typeorm';
+
 import { RegisterDto } from 'src/auth/dto/RegisterDto';
 import { User } from 'src/entities/User';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
@@ -18,9 +19,6 @@ export class UserService {
 
     async create(registerDto: RegisterDto) {
         const user = User.fromDto(registerDto);
-        // user.email = registerDto.email;
-        // user.password = registerDto.password;
-        // user.username = registerDto.username;
 
         const hashedPassword = await bcrypt.hash(registerDto.password, 12);
 
@@ -39,8 +37,6 @@ export class UserService {
                 `User with email "${registerDto.email}" already exist`,
             );
         }
-
-       
     }
     async getById(id: number) {
         try {

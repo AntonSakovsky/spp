@@ -5,9 +5,10 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import { TodoCreateDto } from 'src/todo/dto/TodoCreateDto';
 import { Comment } from './Comment';
 import { User } from './User';
-import { TodoCreateDto } from 'src/todo/dto/TodoCreateDto';
 
 export enum TodoStatus {
     TODO = 'todo',
@@ -23,7 +24,7 @@ export class Todo {
     @Column()
     task: string;
 
-    @Column({ type: 'date' })
+    @Column({ type: 'date', nullable: true })
     deadline: Date;
 
     @Column({ type: 'enum', enum: TodoStatus, default: TodoStatus.TODO })
@@ -35,7 +36,10 @@ export class Todo {
     @Column({ nullable: true })
     description: string;
 
-    @OneToMany(() => Comment, (comment) => comment.todo, { nullable: true })
+    @OneToMany(() => Comment, (comment) => comment.todo, {
+        nullable: true,
+        cascade: true,
+    })
     comments: Comment[];
 
     @ManyToOne(() => User, (user) => user.todos)
@@ -43,7 +47,6 @@ export class Todo {
 
     static fromCreateDto(dto: TodoCreateDto): Todo {
         const todo = new Todo();
-        todo.deadline = new Date(dto.deadline);
         todo.status = dto.status;
         todo.task = dto.task;
         todo.order = dto.order;
