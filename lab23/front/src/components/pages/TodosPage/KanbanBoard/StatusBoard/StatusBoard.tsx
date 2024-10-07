@@ -31,16 +31,17 @@ export const StatusBoard: FC<StatusBoardProps> = observer(({ status, board, onDe
         const currentTodo = todoStore.draggedTodo as TodoItem;
         const boards = todoStore.boards;
         const currentBoard = todoStore.dragDropBoard as StatusType;
-        const currentBoardItems = boards[currentBoard];
+        const currentBoardItems = [...boards[currentBoard]];
 
         const currentTodoIndex = currentBoardItems.indexOf(currentTodo);
 
         currentBoardItems.splice(currentTodoIndex, 1);
 
-        const dropBoardItems = boards[status];
+        const dropBoardItems = [...boards[status]];
+        currentTodo.status = status;
         dropBoardItems.push(currentTodo);
 
-        if (currentTodo.status !== status) {
+        // if (currentTodo.status !== status) {
             try {
                 const todoDto: TodoUpdateDto = { id: currentTodo.id, status };
                 await TodoService.updateTodo(todoDto);
@@ -50,7 +51,7 @@ export const StatusBoard: FC<StatusBoardProps> = observer(({ status, board, onDe
             } catch (error) {
                 console.log(error);
             }
-        }
+        // }
     };
 
     const onDragOver = (e: DragEvent<HTMLDivElement>) => {

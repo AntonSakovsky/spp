@@ -17,6 +17,7 @@ class TodosStore {
     createdTodo: Pick<TodoItem, "status" | "order"> | null = null;
 
     updatedTodo: TodoItem | null = null;
+    previousStatus: StatusType | null = null;
 
     boardsFilter: BoardsFilter = {
         done: "NONE",
@@ -35,8 +36,25 @@ class TodosStore {
     }
 
     setTodo(todo: TodoItem) {
-        const index = this.boards[todo.status].findIndex((t) => t.id === todo.id);
-        this.boards[todo.status].splice(index, 1, todo);
+        if (this.previousStatus) {
+
+            this.boards[todo.status] = [...this.boards[todo.status], todo];
+
+            debugger;
+            //deleting from previous board if status changed
+            const index = this.boards[this.previousStatus].findIndex((t) => t.id === todo.id);
+            if (index !== -1) {
+                this.boards[this.previousStatus].splice(index, 1);
+            }
+        } else {
+            //setting new todo
+            const index = this.boards[todo.status].findIndex((t) => t.id === todo.id);
+            this.boards[todo.status].splice(index, 1, todo);
+        }
+    }
+
+    setPreviuosStatus(status: StatusType) {
+        this.previousStatus = status;
     }
 
     addTodo(todo: TodoItem) {
@@ -57,7 +75,7 @@ class TodosStore {
         try {
             await TodoService.updateTodoOrder(reorderedTodos);
             runInAction(() => {
-                this.boards[boardName] = [...reorderedTodos];
+                this.boards[boardName] = reorderedTodos;
             });
         } catch (error) {
             console.error("Error updating todo order:", error);
@@ -94,10 +112,9 @@ class TodosStore {
     }
 
     addUpdatedTodoComment(comment: Comment) {
-        if(this.updatedTodo) {
-            this.updatedTodo.comments = [...this.updatedTodo.comments , comment];
+        if (this.updatedTodo) {
+            this.updatedTodo.comments = [...this.updatedTodo.comments, comment];
         }
-        
     }
 
     toggleDateFilter(status: StatusType) {

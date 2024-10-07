@@ -59,26 +59,29 @@ export const Todo: FC<TodoProps> = ({ todo, boardName, onDelete, onEdit }) => {
         divider.style.opacity = "0";
 
         const currentTodo = todoStore.draggedTodo as TodoItem;
-        const boards = todoStore.boards;
-        const currentBoard = todoStore.dragDropBoard as StatusType;
-        const currentBoardItems = boards[currentBoard];
+        if (currentTodo !== todo) {
+            const boards = todoStore.boards;
+            const currentBoard = todoStore.dragDropBoard as StatusType;
+            const currentBoardItems = boards[currentBoard];
 
-        const currentTodoIndex = currentBoardItems.indexOf(currentTodo);
+            const currentTodoIndex = currentBoardItems.indexOf(currentTodo);
 
-        currentBoardItems.splice(currentTodoIndex, 1);
+            currentBoardItems.splice(currentTodoIndex, 1);
 
-        const dropBoardItems = boards[boardName];
-        const dropIndex = dropBoardItems.indexOf(todo);
-        dropBoardItems.splice(dropIndex + 1, 0, currentTodo);
+            const dropBoardItems = boards[boardName];
+            const dropIndex = dropBoardItems.indexOf(todo);
+            currentTodo.status = boardName;
+            dropBoardItems.splice(dropIndex + 1, 0, currentTodo);
 
-        try {
-            const todoDto: TodoUpdateDto = { id: currentTodo.id, status: boardName };
-            await TodoService.updateTodo(todoDto);
+            try {
+                const todoDto: TodoUpdateDto = { id: currentTodo.id, status: boardName };
+                await TodoService.updateTodo(todoDto);
 
-            todoStore.updateTodosOrder(boardName, dropBoardItems);
-            todoStore.updateTodosOrder(currentBoard, currentBoardItems);
-        } catch (error) {
-            console.log(error);
+                todoStore.updateTodosOrder(boardName, dropBoardItems);
+                todoStore.updateTodosOrder(currentBoard, currentBoardItems);
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 

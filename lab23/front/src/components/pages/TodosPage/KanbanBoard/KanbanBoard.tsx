@@ -24,6 +24,7 @@ export const KanbanBoard = observer(() => {
             const todoDto: TodoUpdateDto = { ...(todoStore.updatedTodo as TodoItem) };
             await TodoService.updateTodo(todoDto);
             todoStore.setTodo(todoStore.updatedTodo as TodoItem);
+            
         } catch (error) {
             console.log(error);
         } finally {

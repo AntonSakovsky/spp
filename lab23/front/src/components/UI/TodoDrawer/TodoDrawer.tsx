@@ -43,7 +43,9 @@ export const TodoDrawer: FC<TodoDrawerProps> = observer(({ open, updatedTodo, on
                 ...updatedTodo,
                 status: e.target.value as StatusType,
             };
+            todoStore.setPreviuosStatus(updatedTodo.status);
             todoStore.setUpdatedTodo(newUpdatedTodo);
+           
         } catch (error) {
             console.log(error);
         }
