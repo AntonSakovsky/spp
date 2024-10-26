@@ -1,0 +1,16 @@
+.authPage {
+    background-color: #C0BCFA;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forms {
+    background-color: rgb(255, 255, 255);
+    padding: var(--padding-l);
+    border-radius: var(--radius-m);
+    max-width: 1000px;
+    box-shadow: -2px 30px 70px 0px rgba(0, 0, 0, 0.20);
+    min-height: var(--auth-form-height);
+}

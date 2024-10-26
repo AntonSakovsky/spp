@@ -1,0 +1,46 @@
+$avatarSize: 25px;
+
+.comment {
+    margin-bottom: var(--margin-xs);
+
+    &.inverse {
+        text-align: right;
+    }
+}
+.user {
+    display: flex;
+    align-items: first baseline;
+    gap: 5px;
+
+    .avatar {
+        width: $avatarSize;
+        height: $avatarSize;
+        font-size: 14px;
+    }
+
+    &.inverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.userName {
+    margin: 0;
+}
+
+.messageBlock {
+    display: flex;
+    flex-direction: column;
+    margin-left: $avatarSize + 5px;
+
+    &.inverse {
+        margin-right: $avatarSize + 5px;
+        margin-left: 0;
+    }
+}
+
+.message {
+    margin: 0;
+    line-height: 16px;
+
+    
+}

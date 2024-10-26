@@ -45,6 +45,8 @@ export const KanbanBoard = observer(() => {
         openDrawer(todo);
     };
 
+    console.log('render');
+
     return (
         <div className={style.kanban}>
             {Object.entries(todoStore.boards).map((board, index) => (

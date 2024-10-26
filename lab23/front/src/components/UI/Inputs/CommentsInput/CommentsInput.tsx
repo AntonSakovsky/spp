@@ -14,6 +14,7 @@ export const CommentsInput = () => {
     const sendFile = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] as File;
         const formData = new FormData();
+        
         formData.append("file", file);
         formData.append("todoId", Number(todoStore.updatedTodo?.id).toString());
         try {

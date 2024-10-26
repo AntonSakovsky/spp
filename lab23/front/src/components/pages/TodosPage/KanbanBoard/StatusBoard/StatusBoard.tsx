@@ -41,17 +41,15 @@ export const StatusBoard: FC<StatusBoardProps> = observer(({ status, board, onDe
         currentTodo.status = status;
         dropBoardItems.push(currentTodo);
 
-        // if (currentTodo.status !== status) {
-            try {
-                const todoDto: TodoUpdateDto = { id: currentTodo.id, status };
-                await TodoService.updateTodo(todoDto);
+        try {
+            const todoDto: TodoUpdateDto = { id: currentTodo.id, status };
+            await TodoService.updateTodo(todoDto);
 
-                todoStore.updateTodosOrder(currentBoard, currentBoardItems);
-                todoStore.updateTodosOrder(status, dropBoardItems);
-            } catch (error) {
-                console.log(error);
-            }
-        // }
+            todoStore.updateTodosOrder(currentBoard, currentBoardItems);
+            todoStore.updateTodosOrder(status, dropBoardItems);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const onDragOver = (e: DragEvent<HTMLDivElement>) => {

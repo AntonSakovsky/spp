@@ -1,0 +1,74 @@
+.statusBoard {
+    flex: 1;
+    background-color: #e6ecf0;
+    padding: var(--padding-xs);
+    padding-right: 0;
+    padding-bottom: 0;
+    border-radius: var(--radius-s);
+
+    .tools {
+        display: flex;
+        gap: 5px;
+    }
+
+    .addTodoSmall, .filter {
+        width: 30px;
+        height: 30px;
+        min-width: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 0px;
+        opacity: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    &:hover .addTodoSmall, &:hover .filter {
+        opacity: 1;
+    }
+
+    .addTodo {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: calc(100% - var(--padding-xs));
+        margin-bottom: var(--margin-s);
+        gap: 5px;
+        padding: var(--padding-xs);
+        transition: background-color 0.2s ease;
+        border-radius: var(--radius-s);
+        background-color: rgba(255, 255, 255, 0.3);
+    
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+        }
+    }
+}
+
+.statusBoardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: var(--padding-xs);
+    margin-bottom: var(--margin-xs);
+}
+.statusWrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.count {
+    font-size: 14px;
+    color: rgb(71, 71, 71);
+}
+
+.filter {
+    width: 30px;
+}

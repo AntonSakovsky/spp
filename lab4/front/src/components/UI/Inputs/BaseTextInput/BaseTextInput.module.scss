@@ -1,0 +1,31 @@
+.baseInput input {
+    width: 100%;
+    
+}
+
+.inputWrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+
+}
+.baseInput div {
+     &::after {
+        border-color: rgb(203, 0, 203);
+    }
+
+    &::before {
+        border-color: rgb(243, 72, 243);
+    }
+
+    &:hover::before {
+        border-color: rgb(219, 49, 219) !important;
+    }
+}
+
+.error {
+    height: 14px;
+    font-size: 14px;
+    line-height: 14px;
+    color: red;
+}

@@ -1,0 +1,18 @@
+.google {
+    --button-size: 48px;
+
+    border-radius: 50%;
+    border: 1px solid rgb(228, 227, 255);
+    box-shadow: 0px 0px 50px 2px rgba(195, 193, 255, 0.592);
+    padding: 5px;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: calc(var(--button-size) / 2);
+        height: calc(var(--button-size) / 2);
+    }
+}

@@ -29,6 +29,10 @@ export class TodoService {
     }
 
     static async upload(formData: FormData): Promise<AxiosResponse<Comment>> {
-        return api.post<Comment>("todos/upload", formData);
+        return api.post<Comment>("todos/upload", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
     }
 }
