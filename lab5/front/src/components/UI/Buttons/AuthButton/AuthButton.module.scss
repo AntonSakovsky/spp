@@ -1,0 +1,11 @@
+.authBtn.btn {
+    background-color: #6C63FF;
+    padding-block: var(--padding-xs);
+    border-radius: var(--radius-m);
+    margin-bottom: var(--margin-xs);
+
+    &:disabled {
+        background-color: #6b63ff8e;
+        color: white;
+    }
+}

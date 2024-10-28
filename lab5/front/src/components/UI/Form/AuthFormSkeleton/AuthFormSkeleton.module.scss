@@ -1,0 +1,48 @@
+.formSkeleton {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.imagePart {
+    flex: 1;
+    height: calc(var(--auth-form-height) - var(--padding-xl));
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+}
+
+.title {
+    color: #2F2E41;
+    font-size: 40px;
+    line-height: 40px;
+    
+}
+
+.subtitle {
+    color: #282020;
+    font-size: 20px;
+}
+
+.subtitle, .title {
+    margin: 0;
+    margin-left: 60px;
+}
+
+.image {
+    width: 70%;
+    position: relative;
+    margin-left: 60px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.formPart {
+    flex: 1;
+    justify-content: center;
+}
+

@@ -1,0 +1,84 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CommentCreateDto {
+  message: String!
+  todoId: Int!
+}
+
+type CommentModel {
+  filename: String
+  filepath: String
+  id: Int!
+  message: String
+  todo: TodoModel!
+  user: UserModel
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createComment(commentDto: CommentCreateDto!): CommentModel!
+  createTodo(todoDto: TodoCreateDto!): TodoModel!
+  deleteTodo(todoId: Int!): Boolean!
+  updateTodo(todoDto: TodoUpdateDto!): TodoModel!
+  updateTodosOrder(todosDto: [UpdateTodosOrderDto!]!): Boolean!
+  uploadFile(file: String!, filename: String!, todoId: Int!): CommentModel!
+}
+
+"""A valid date-time value"""
+scalar MyDateTime
+
+type Query {
+  allTodos: [TodoModel!]!
+  downloadFile(filename: String!): Boolean!
+}
+
+input TodoCreateDto {
+  order: Int!
+  status: TodoStatus!
+  task: String!
+}
+
+type TodoModel {
+  comments: [CommentModel!]!
+  creator: UserModel!
+  deadline: MyDateTime
+  description: String
+  id: Int!
+  order: Int!
+  status: TodoStatus!
+  task: String!
+}
+
+enum TodoStatus {
+  DONE
+  IN_PROGRESS
+  TODO
+}
+
+input TodoUpdateDto {
+  deadline: DateTime
+  description: String
+  id: Int!
+  status: TodoStatus
+  task: String
+}
+
+input UpdateTodosOrderDto {
+  id: Int!
+  order: Int!
+}
+
+type UserModel {
+  comments: [CommentModel!]!
+  email: String!
+  id: Int!
+  password: String!
+  todos: [TodoModel!]!
+  username: String!
+}

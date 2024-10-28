@@ -1,0 +1,112 @@
+.todoWrap {
+    position: relative;
+}
+
+.divider {
+    height: 4px;
+    width: 100%;
+    background-color: rgba(0, 68, 255, 0.597);
+    border-radius: var(--radius-s);
+    opacity: 0;
+    transition: opacity .2s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+}
+
+.todo {
+    padding: var(--padding-xs);
+    padding-block: 6px 4px;
+    background-color: white;
+    border-radius: var(--radius-s);
+    position: relative;
+    cursor: pointer;
+
+    &.dragged {
+        opacity: 0.5;
+    }
+
+    &:hover .tools {
+        opacity: 1;
+    }
+}
+
+.task {
+    margin: 0;
+}
+.tools {
+    transition: opacity 0.25s ease;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+}
+.editIconWrap,
+.deleteIconWrap {
+    border-radius: var(--radius-s);
+    border: 1px solid rgb(228, 228, 228);
+    width: 25px;
+    height: 25px;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(50, 50, 50);
+
+    &:hover {
+        background-color: rgb(228, 228, 228);
+    }
+}
+
+.editIcon,
+.commentIcon,
+.deleteIcon,
+.calendarIcon {
+    font-size: 14px;
+}
+
+.deleteIcon {
+    color: red;
+}
+
+.todoFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+    margin-top: 15px;
+}
+
+.comments {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    cursor: pionter;
+}
+
+.commentIconWrap {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commentIcon {
+}
+.countComments {
+    font-size: 12px;
+}
+
+.calendar{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date {
+    font-size: 13px;
+}

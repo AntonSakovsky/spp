@@ -1,0 +1,15 @@
+.property {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--margin-xs);
+}
+.propertyName {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 150px;
+    font-size: 16px;
+}
+.propertyField {
+    width: 100%;
+}

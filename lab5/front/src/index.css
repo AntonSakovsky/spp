@@ -1,0 +1,29 @@
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --padding-xl: 24px;
+  --padding-l: 20px;
+  --padding-m: 16px;
+  --padding-s: 12px;
+  --padding-xs: 8px;
+
+  --margin-xl: 24px;
+  --margin-l: 20px;
+  --margin-m: 16px;
+  --margin-s: 12px;
+  --margin-xs: 8px;
+
+  --radius-xl: 20px;
+  --radius-l: 16px;
+  --radius-m: 12px;
+  --radius-s: 6px;
+  --radius-xs: 2px;
+
+  --auth-form-height: 65svh;
+}
+

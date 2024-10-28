@@ -1,0 +1,8 @@
+.select {
+    width: 100%;
+
+    & > div {
+        padding: var(--padding-xs);
+        padding-left: var(--padding-s);
+    }
+}
